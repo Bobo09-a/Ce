@@ -7,7 +7,6 @@
 <meta name="theme-color" content="#000000">
 <style>
   :root{
-    /* Thème noir futuriste + glass */
     --bg:#000; --grad1:#0a0b14; --grad2:#06070c;
     --glass1:rgba(255,255,255,.08); --glass2:rgba(255,255,255,.04);
     --line:#1a1e36; --txt:#f1f4ff; --muted:#aab3ff;
@@ -22,7 +21,6 @@
       radial-gradient(900px 600px at 0% 110%, #31114d 0, transparent 60%),
       linear-gradient(180deg,var(--grad1),var(--grad2)), var(--bg);
   }
-  /* Header compact */
   header{
     position:sticky;top:0;z-index:20;
     background:linear-gradient(180deg,rgba(10,12,28,.88),rgba(6,7,16,.72));
@@ -34,10 +32,7 @@
   .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#00e5ff,#7aa2ff);box-shadow:0 6px 20px rgba(122,162,255,.35),inset 0 0 14px rgba(255,255,255,.2)}
   .title{font-weight:900;letter-spacing:.02em;font-size:15px;line-height:1}
   .subtitle{color:var(--muted);font-size:.9rem;margin-top:2px}
-  .statusBtn{
-    appearance:none;border:1px solid var(--line);border-radius:999px;padding:.45rem .75rem;
-    background:linear-gradient(180deg,rgba(25,31,84,.9),rgba(16,18,48,.9));color:#e6f7ff;font-weight:800
-  }
+  .statusBtn{appearance:none;border:1px solid var(--line);border-radius:999px;padding:.45rem .75rem;background:linear-gradient(180deg,rgba(25,31,84,.9),rgba(16,18,48,.9));color:#e6f7ff;font-weight:800}
 
   .wrap{max-width:1140px;margin:10px auto 90px;padding:0 12px}
   .app{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--glass1),var(--glass2));
@@ -61,10 +56,11 @@
   .btn{appearance:none;border:1px solid var(--line);background:linear-gradient(180deg,rgba(25,31,84,.9),rgba(16,18,48,.9));color:#e6f7ff;border-radius:10px;padding:.7rem .9rem;cursor:pointer;font-weight:700}
   .btn.primary{background:linear-gradient(135deg,#00e5ff,#7aa2ff);color:#07122a;border-color:transparent}
   .btn.ghost{background:transparent}
-  input[type=file],input[type=text],input[type=number],textarea,select{width:100%;padding:.7rem .8rem;border-radius:10px;border:1px solid #2a3688;background:#0b0f26;color:#e6f7ff}
-  canvas,img,video{max-width:100%}
+  input[type=file],input[type=text],input[type=number],textarea,select,input[type=color]{width:100%;padding:.7rem .8rem;border-radius:10px;border:1px solid #2a3688;background:#0b0f26;color:#e6f7ff}
+  input[type=color]{padding:.2rem;height:42px}
+  canvas,img{max-width:100%}
 
-  /* Modale plein écran (outils) */
+  /* Modale plein écran */
   .modal{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;padding:12px}
   .modal.open{display:flex}
   .overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(2px)}
@@ -74,16 +70,18 @@
   .close{appearance:none;border:1px solid var(--line);background:linear-gradient(180deg,rgba(25,31,84,.9),rgba(16,18,48,.9));color:#e6f7ff;border-radius:10px;padding:.45rem .6rem;cursor:pointer}
   .progress{height:8px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
   .bar{height:100%;width:0;background:linear-gradient(90deg,#00e5ff,#7aa2ff)}
+  .inline-err{color:var(--ko);font-size:.95rem}
 
-  /* Footer avec Facebook */
+  /* Footer */
   footer{margin-top:16px;padding:12px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--glass1),var(--glass2));-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
   .fb-embed{display:grid;gap:10px;place-items:center}
   .fb-btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:linear-gradient(135deg,#1877f2,#6aa8ff);color:#fff;padding:.7rem 1rem;border-radius:999px;font-weight:800}
   .fb-btn .fbico{width:20px;height:20px;border-radius:50%;background:#fff;display:grid;place-items:center;color:#1877f2;font-weight:900}
+  .links{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .cta{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:linear-gradient(135deg,#00e5ff,#7aa2ff);color:#07122a;padding:.7rem 1rem;border-radius:999px;font-weight:800;border:1px solid transparent}
 </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="head">
       <div class="brand">
@@ -97,11 +95,9 @@
     </div>
   </header>
 
-  <!-- Contenu -->
   <div class="wrap">
     <div class="app">
       <div class="main">
-        <!-- Menu d’outils -->
         <aside id="menu">
           <div class="tiles">
             <div class="tile" data-tool="merge"><div class="icon">🧩</div><div><b>Fusionner PDF</b><small>Assembler plusieurs PDF</small></div></div>
@@ -112,9 +108,9 @@
             <div class="tile" data-tool="pdf2img"><div class="icon">🖼️</div><div><b>PDF → Images</b><small>PNG par page + ZIP</small></div></div>
             <div class="tile" data-tool="img2pdf"><div class="icon">📄</div><div><b>Images → PDF</b><small>Plusieurs images → 1 PDF</small></div></div>
             <div class="tile" data-tool="pdf2text"><div class="icon">🔎</div><div><b>PDF → Texte</b><small>Extraction</small></div></div>
-            <div class="tile" data-tool="watermark"><div class="icon">💧</div><div><b>Filigrane (texte)</b><small>Superposition</small></div></div>
+            <div class="tile" data-tool="watermark"><div class="icon">💧</div><div><b>Filigrane (texte)</b><small>Couleur personnalisée</small></div></div>
             <div class="tile" data-tool="imgtools"><div class="icon">✏️</div><div><b>Rogner / Redimensionner</b><small>Outils image</small></div></div>
-            <div class="tile" data-tool="removebg"><div class="icon">🪄</div><div><b>Supprimer fond (image)</b><small>Segmentation IA</small></div></div>
+            <div class="tile" data-tool="removebg"><div class="icon">🪄</div><div><b>Supprimer fond (image)</b><small>Personne/Objet</small></div></div>
             <div class="tile" data-tool="img2webp"><div class="icon">🪶</div><div><b>Image → WebP</b><small>Réduire la taille</small></div></div>
             <div class="tile" data-tool="imgCompress"><div class="icon">📉</div><div><b>Compresser image</b><small>Qualité ajustable</small></div></div>
             <div class="tile" data-tool="txt2pdf"><div class="icon">📝</div><div><b>TXT → PDF</b><small>Fichier texte</small></div></div>
@@ -123,29 +119,29 @@
           </div>
         </aside>
 
-        <!-- Zone info -->
         <section class="panel" id="panel">
           <div class="card">
             <h2>Bienvenue 👋</h2>
-            <p class="muted">Clique sur un outil à gauche. Chaque outil s’ouvre dans une <b>fenêtre modale</b> au centre. Tout est traité <b>localement</b> dans ton navigateur (mobile & PC).</p>
+            <p class="muted">Clique un outil. Tout s’ouvre dans une <b>fenêtre modale</b> au centre. Traitement <b>local</b> (mobile & PC).</p>
           </div>
         </section>
       </div>
     </div>
 
-    <!-- Footer avec lien Facebook -->
     <footer>
+      <div class="links" style="margin-bottom:10px">
+        <a class="cta" href="https://wa.me/22952964028" target="_blank" rel="noopener">📞 Contactez‑nous (WhatsApp)</a>
+        <a class="cta" href="https://creikfmx.mychariow.com/" target="_blank" rel="noopener">🛒 Boutique Chariow</a>
+      </div>
       <div class="fb-embed">
         <a class="fb-btn" href="https://www.facebook.com/share/16WSwBEq3M/?mibextid=wwXIfr" target="_blank" rel="noopener">
           <span class="fbico">f</span> Suivre CRÉATIVE ENTREPRISE sur Facebook
         </a>
-        <iframe
-          title="Facebook"
+        <iframe title="Facebook"
           src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16WSwBEq3M%2F%3Fmibextid%3DwwXIfr&tabs=timeline&width=340&height=180&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true"
           width="340" height="180" style="border:none;overflow:hidden;border-radius:12px"
           scrolling="no" frameborder="0" allowfullscreen="true"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
         <div class="muted" style="text-align:center">© CRÉATIVE ENTREPRISE</div>
       </div>
     </footer>
@@ -166,7 +162,7 @@
     </div>
   </div>
 
-  <!-- Librairies CDN -->
+  <!-- CDNs -->
   <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
@@ -178,130 +174,109 @@
   <script>
   (()=>{'use strict';
   const $=(s,r=document)=>r.querySelector(s);
-  const setStatus = (t)=> $('#status').textContent=t;
-  const modal = $('#modal'), modalBody=$('#modalBody'), modalTitle=$('#modalTitle'), bar=$('#progressBar');
-  const openModal = (title, html)=>{ modalTitle.textContent=title; modalBody.innerHTML=html; modal.classList.add('open'); document.body.style.overflow='hidden'; setStatus('Prêt ✅'); setProgress(0); };
-  const closeModal = ()=>{ modal.classList.remove('open'); modalBody.innerHTML=''; document.body.style.overflow=''; setStatus('Prêt ✅'); };
-  $('#closeModal').onclick = closeModal;
-  $('.overlay').onclick = closeModal;
+  const statusBtn=$('#status');
+  const setStatus = (t)=> statusBtn.textContent=t;
+  const modal=$('#modal'), modalBody=$('#modalBody'), modalTitle=$('#modalTitle'), bar=$('#progressBar');
+  const openModal=(title,html)=>{ modalTitle.textContent=title; modalBody.innerHTML=html; modal.classList.add('open'); document.body.style.overflow='hidden'; setStatus('Prêt ✅'); setProgress(0); };
+  const closeModal=()=>{ modal.classList.remove('open'); modalBody.innerHTML=''; document.body.style.overflow=''; setStatus('Prêt ✅'); };
+  $('#closeModal').onclick=closeModal; $('.overlay').onclick=closeModal;
 
-  function setProgress(pct, eta=''){
-    bar.style.width = Math.max(0, Math.min(100, pct||0)) + '%';
-    $('#status').textContent = pct>0 && pct<100 ? `Traitement… ${Math.round(pct)}% ${eta?('• ~'+eta+'s'):''}` : 'Prêt ✅';
-  }
-  function etaFrom(start, done, total){
-    if(done===0) return '';
-    const elapsed = (performance.now()-start)/1000;
-    const perItem = elapsed/done;
-    const remain = Math.max(0, (total-done)*perItem);
-    return Math.max(1, Math.round(remain));
-  }
-  function downloadBlob(blob, name){ saveAs(blob, name); }
+  function setProgress(pct, eta=''){ bar.style.width=Math.max(0,Math.min(100,pct||0))+'%'; statusBtn.textContent=(pct>0&&pct<100)?`Traitement… ${Math.round(pct)}%${eta?(' • ~'+eta+'s'):''}`:'Prêt ✅'; }
+  function etaFrom(start, done, total){ if(done===0) return ''; const elapsed=(performance.now()-start)/1000; const perItem=elapsed/done; const remain=Math.max(0,(total-done)*perItem); return Math.max(1,Math.round(remain)); }
+  function downloadBlob(blob,name){ saveAs(blob,name); }
   async function readAsArrayBuffer(file){ return await file.arrayBuffer(); }
   async function readAsDataURL(file){ return await new Promise((res,rej)=>{ const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=rej; fr.readAsDataURL(file); }); }
-  function canvasToBlob(canvas, type='image/png', quality=0.92){ return new Promise(res=>canvas.toBlob(b=>res(b),type,quality)); }
+  function canvasToBlob(canvas,type='image/png',quality=0.92){ return new Promise(res=>canvas.toBlob(b=>res(b),type,quality)); }
+  const hex2rgb = (hex)=>{ const m=hex.replace('#',''); const bigint=parseInt(m,16); const r=(bigint>>16)&255, g=(bigint>>8)&255, b=bigint&255; return [r/255,g/255,b/255]; };
 
-  // Menu -> ouvre outils en modale
+  // Ouvre outils
   $('#menu').addEventListener('click', e=>{
-    const tile = e.target.closest('.tile'); if(!tile) return;
-    const tool = tile.dataset.tool;
-    (tools[tool]||tools.home)();
+    const tile=e.target.closest('.tile'); if(!tile) return;
+    const tool=tile.dataset.tool; (tools[tool]||tools.home)();
   });
 
-  const tools = {
+  const inlineErr = (id,msg)=>{ const el=$('#'+id); if(el){ el.textContent=msg; el.style.display=msg?'block':'none'; } };
+
+  const tools={
     home(){},
-    merge(){ openModal('Fusionner des PDF', `
+    merge(){ openModal('Fusionner des PDF',`
       <div class="grid">
         <input id="files" type="file" accept="application/pdf" multiple>
+        <div id="err" class="inline-err" style="display:none"></div>
         <button id="go" class="btn primary">Fusionner</button>
       </div>`); $('#go').onclick=async()=>{
-        const files=[...$('#files').files]; if(!files.length) return alert('Ajoute des PDFs');
-        const start=performance.now(); setProgress(5);
-        const out = await PDFLib.PDFDocument.create();
-        let i=0;
+        const files=[...$('#files').files]; if(!files.length){ inlineErr('err','Ajoute au moins un PDF.'); return; }
+        inlineErr('err',''); const start=performance.now(); setProgress(5);
+        const out=await PDFLib.PDFDocument.create(); let i=0;
         for(const f of files){
-          const src = await PDFLib.PDFDocument.load(await readAsArrayBuffer(f));
-          const copied = await out.copyPages(src, src.getPageIndices());
-          copied.forEach(p=> out.addPage(p));
-          i++; setProgress(5 + (i/files.length)*90, etaFrom(start,i,files.length));
+          const src=await PDFLib.PDFDocument.load(await readAsArrayBuffer(f));
+          const copied=await out.copyPages(src,src.getPageIndices()); copied.forEach(p=>out.addPage(p));
+          i++; setProgress(5+(i/files.length)*90,etaFrom(start,i,files.length));
         }
-        const bytes = await out.save();
-        downloadBlob(new Blob([bytes],{type:'application/pdf'}), 'fusion.pdf');
-        setProgress(100,0);
+        const bytes=await out.save(); downloadBlob(new Blob([bytes],{type:'application/pdf'}),'fusion.pdf'); setProgress(100,0);
       };},
 
-    split(){ openModal('Séparer / Extraire des pages', `
+    split(){ openModal('Séparer / Extraire des pages',`
       <div class="grid">
         <input id="file" type="file" accept="application/pdf">
         <label>Pages (ex: 1-3,5,7) <input id="ranges" type="text" placeholder="1-3,5,7"></label>
+        <div id="err" class="inline-err" style="display:none"></div>
         <button id="go" class="btn primary">Extraire</button>
       </div>`); $('#go').onclick=async()=>{
-        const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
-        const start=performance.now(); setProgress(5);
-        const ranges = parseRanges($('#ranges').value.trim());
-        const src = await PDFLib.PDFDocument.load(await readAsArrayBuffer(f));
-        const out = await PDFLib.PDFDocument.create();
-        const pages = (ranges.length? ranges : src.getPageIndices().map(i=>i+1)).map(n=>n-1).filter(i=> i>=0 && i<src.getPageCount());
-        const copied = await out.copyPages(src, pages);
-        copied.forEach((p,idx)=>{ out.addPage(p); setProgress(5 + ((idx+1)/copied.length)*90, etaFrom(start, idx+1, copied.length)); });
-        const bytes = await out.save();
-        downloadBlob(new Blob([bytes],{type:'application/pdf'}), f.name.replace(/\.pdf$/i,'')+'_extrait.pdf');
-        setProgress(100,0);
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute un PDF.'); return; }
+        inlineErr('err',''); const start=performance.now(); setProgress(5);
+        const ranges=parseRanges($('#ranges').value.trim());
+        const src=await PDFLib.PDFDocument.load(await readAsArrayBuffer(f));
+        const out=await PDFLib.PDFDocument.create();
+        const pages=(ranges.length?ranges:src.getPageIndices().map(i=>i+1)).map(n=>n-1).filter(i=>i>=0&&i<src.getPageCount());
+        const copied=await out.copyPages(src,pages);
+        copied.forEach((p,idx)=>{ out.addPage(p); setProgress(5+((idx+1)/copied.length)*90,etaFrom(start,idx+1,copied.length)); });
+        const bytes=await out.save(); downloadBlob(new Blob([bytes],{type:'application/pdf'}), f.name.replace(/\.pdf$/i,'')+'_extrait.pdf'); setProgress(100,0);
       };},
 
-    reorder(){ openModal('Réorganiser / Rotation', `
+    reorder(){ openModal('Réorganiser / Rotation',`
       <div class="grid">
         <input id="file" type="file" accept="application/pdf">
+        <div id="err" class="inline-err" style="display:none"></div>
         <div id="pages" class="grid" style="grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px"></div>
         <button id="save" class="btn primary">Exporter PDF</button>
-      </div>`); let srcPdf, order=[], rotations=[];
+      </div>`); let srcPdf,order=[],rotations=[];
       $('#file').onchange=async()=>{
-        const f=$('#file').files[0]; if(!f) return;
-        const start=performance.now(); setProgress(5);
-        const arr = await readAsArrayBuffer(f);
-        const pdfjs = await pdfjsLib.getDocument({data:arr}).promise;
-        srcPdf = await PDFLib.PDFDocument.load(arr);
-        order = Array.from({length: pdfjs.numPages}, (_,i)=>i); rotations = order.map(()=>0);
-        const list = $('#pages'); list.innerHTML='';
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute un PDF.'); return; }
+        inlineErr('err',''); const start=performance.now(); setProgress(5);
+        const arr=await readAsArrayBuffer(f); const pdfjs=await pdfjsLib.getDocument({data:arr}).promise; srcPdf=await PDFLib.PDFDocument.load(arr);
+        order=Array.from({length:pdfjs.numPages},(_,i)=>i); rotations=order.map(()=>0);
+        const list=$('#pages'); list.innerHTML='';
         for(let i=1;i<=pdfjs.numPages;i++){
-          const page=await pdfjs.getPage(i);
-          const viewport=page.getViewport({scale:.4});
+          const page=await pdfjs.getPage(i); const viewport=page.getViewport({scale:.4});
           const canvas=document.createElement('canvas'); const ctx=canvas.getContext('2d');
           canvas.width=viewport.width; canvas.height=viewport.height;
           await page.render({canvasContext:ctx,viewport}).promise;
           const card=document.createElement('div'); card.className='card'; card.draggable=true; card.dataset.idx=(i-1);
           card.innerHTML=`<div class="row" style="align-items:flex-start"><img src="${canvas.toDataURL()}" style="width:100%"></div>
                           <div class="row"><button class="btn rotL">⟲</button><button class="btn rotR">⟳</button></div>`;
-          list.appendChild(card); setProgress(5 + (i/pdfjs.numPages)*90, etaFrom(start,i,pdfjs.numPages));
+          list.appendChild(card); setProgress(5+(i/pdfjs.numPages)*90,etaFrom(start,i,pdfjs.numPages));
         }
-        // DnD
         let dragEl=null;
-        list.addEventListener('dragstart', e=>{ dragEl=e.target.closest('.card'); e.dataTransfer.setData('text/plain','x');});
-        list.addEventListener('dragover', e=>{ e.preventDefault(); const tgt=e.target.closest('.card'); if(!tgt||tgt===dragEl) return; const b=tgt.getBoundingClientRect(); const after=(e.clientY-b.top)>(b.height/2); list.insertBefore(dragEl, after?tgt.nextSibling:tgt); });
-        list.addEventListener('drop', ()=>{ order=[...list.children].map(c=>parseInt(c.dataset.idx,10)); });
-        list.addEventListener('click', e=>{
-          const card=e.target.closest('.card'); if(!card) return; const idx=parseInt(card.dataset.idx,10);
-          if(e.target.classList.contains('rotL')) rotations[idx]=(rotations[idx]-90)%360;
-          if(e.target.classList.contains('rotR')) rotations[idx]=(rotations[idx]+90)%360;
-          setStatus(`Rotation page ${idx+1}: ${rotations[idx]}°`);
-        });
+        list.addEventListener('dragstart',e=>{ dragEl=e.target.closest('.card'); e.dataTransfer.setData('text/plain','x');});
+        list.addEventListener('dragover',e=>{ e.preventDefault(); const tgt=e.target.closest('.card'); if(!tgt||tgt===dragEl) return; const b=tgt.getBoundingClientRect(); const after=(e.clientY-b.top)>(b.height/2); list.insertBefore(dragEl, after?tgt.nextSibling:tgt); });
+        list.addEventListener('drop',()=>{ order=[...list.children].map(c=>parseInt(c.dataset.idx,10)); });
+        list.addEventListener('click',e=>{ const card=e.target.closest('.card'); if(!card) return; const idx=parseInt(card.dataset.idx,10); if(e.target.classList.contains('rotL')) rotations[idx]=(rotations[idx]-90)%360; if(e.target.classList.contains('rotR')) rotations[idx]=(rotations[idx]+90)%360; });
         setProgress(100,0);
       };
       $('#save').onclick=async()=>{
-        if(!srcPdf) return alert('Ajoute un PDF');
+        if(!srcPdf){ inlineErr('err','Ajoute un PDF avant d’exporter.'); return; }
         const start=performance.now(); setProgress(5);
-        const out = await PDFLib.PDFDocument.create();
+        const out=await PDFLib.PDFDocument.create();
         for(let i=0;i<order.length;i++){
-          const srcIndex=order[i];
-          const [copied]=await out.copyPages(srcPdf,[srcIndex]);
-          if(rotations[srcIndex]) copied.setRotation(PDFLib.degrees((rotations[srcIndex]+360)%360));
-          out.addPage(copied);
-          setProgress(5 + ((i+1)/order.length)*90, etaFrom(start,i+1,order.length));
+          const [copied]=await out.copyPages(srcPdf,[order[i]]);
+          if(rotations[order[i]]) copied.setRotation(PDFLib.degrees((rotations[order[i]]+360)%360));
+          out.addPage(copied); setProgress(5+((i+1)/order.length)*90,etaFrom(start,i+1,order.length));
         }
         const bytes=await out.save(); downloadBlob(new Blob([bytes],{type:'application/pdf'}),'reorganise.pdf'); setProgress(100,0);
       };},
 
-    numbering(){ openModal('Numérotation des pages', `
+    numbering(){ openModal('Numérotation des pages',`
       <div class="grid">
         <input id="file" type="file" accept="application/pdf">
         <div class="row">
@@ -309,68 +284,57 @@
           <label>Opacité (0.1–1) <input id="op" type="number" min="0.1" max="1" step="0.1" value="0.8"></label>
           <label>Position <select id="pos"><option value="bc">Bas centre</option><option value="bl">Bas gauche</option><option value="br">Bas droit</option></select></label>
         </div>
+        <label>Couleur <input id="color" type="color" value="#ffffff"></label>
+        <div id="err" class="inline-err" style="display:none"></div>
         <button id="go" class="btn primary">Appliquer</button>
       </div>`); $('#go').onclick=async()=>{
-        const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
-        const size=parseFloat($('#size').value||12), op=Math.max(.1,Math.min(1,parseFloat($('#op').value||.8))), pos=$('#pos').value;
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute un PDF.'); return; }
+        inlineErr('err','');
+        const size=parseFloat($('#size').value||12), op=Math.max(.1,Math.min(1,parseFloat($('#op').value||.8))), pos=$('#pos').value, col=$('#color').value; const [r,g,b]=hex2rgb(col);
         const start=performance.now(); setProgress(5);
-        const pdf=await PDFLib.PDFDocument.load(await readAsArrayBuffer(f));
-        const font=await pdf.embedFont(PDFLib.StandardFonts.Helvetica);
-        const pages=pdf.getPages();
+        const pdf=await PDFLib.PDFDocument.load(await readAsArrayBuffer(f)); const font=await pdf.embedFont(PDFLib.StandardFonts.Helvetica); const pages=pdf.getPages();
         for(let i=0;i<pages.length;i++){
-          const p=pages[i]; const {width,height}=p.getSize(); const text=String(i+1);
-          let x=width/2-6,y=14; if(pos==='bl'){x=16;y=14;} if(pos==='br'){x=width-30;y=14;}
-          p.drawText(text,{x,y,size,font,color:PDFLib.rgb(1,1,1),opacity:op});
-          setProgress(5 + ((i+1)/pages.length)*90, etaFrom(start,i+1,pages.length));
+          const p=pages[i]; const {width,height}=p.getSize(); const text=String(i+1); let x=width/2-6,y=14; if(pos==='bl'){x=16;y=14;} if(pos==='br'){x=width-30;y=14;}
+          p.drawText(text,{x,y,size,font,color:PDFLib.rgb(r,g,b),opacity:op});
+          setProgress(5+((i+1)/pages.length)*90,etaFrom(start,i+1,pages.length));
         }
         const bytes=await pdf.save(); downloadBlob(new Blob([bytes],{type:'application/pdf'}), f.name.replace(/\.pdf$/i,'')+'_num.pdf'); setProgress(100,0);
       };},
 
-    removePages(){ openModal('Supprimer des pages', `
+    removePages(){ openModal('Supprimer des pages',`
       <div class="grid">
         <input id="file" type="file" accept="application/pdf">
         <div class="row">
-          <label>Action <select id="mode">
-            <option value="odd">Supprimer impaires</option>
-            <option value="even">Supprimer paires</option>
-            <option value="range">Supprimer intervalle</option>
-          </select></label>
+          <label>Action <select id="mode"><option value="odd">Supprimer impaires</option><option value="even">Supprimer paires</option><option value="range">Supprimer intervalle</option></select></label>
           <label>Intervalle (ex: 2-5) <input id="range" type="text" placeholder="2-5"></label>
         </div>
+        <div id="err" class="inline-err" style="display:none"></div>
         <button id="go" class="btn primary">Supprimer</button>
       </div>`); $('#go').onclick=async()=>{
-        const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
-        const mode=$('#mode').value, range=$('#range').value.trim();
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute un PDF.'); return; }
+        inlineErr('err',''); const mode=$('#mode').value, range=$('#range').value.trim();
         const start=performance.now(); setProgress(5);
-        const src=await PDFLib.PDFDocument.load(await readAsArrayBuffer(f));
-        const out=await PDFLib.PDFDocument.create();
-        const total=src.getPageCount();
-        let keep=[];
+        const src=await PDFLib.PDFDocument.load(await readAsArrayBuffer(f)); const out=await PDFLib.PDFDocument.create(); const total=src.getPageCount(); let keep=[];
         if(mode==='odd'){ for(let i=0;i<total;i++) if((i+1)%2===0) keep.push(i); }
         else if(mode==='even'){ for(let i=0;i<total;i++) if((i+1)%2===1) keep.push(i); }
-        else { // range
-          const [a,b]=(range||'').split('-').map(v=>parseInt(v,10));
-          const del=new Set(); if(!isNaN(a)&&!isNaN(b)){ for(let i=Math.min(a,b)-1;i<=Math.max(a,b)-1;i++) del.add(i); }
-          for(let i=0;i<total;i++) if(!del.has(i)) keep.push(i);
-        }
-        const copied=await out.copyPages(src, keep);
-        for(let i=0;i<copied.length;i++){ out.addPage(copied[i]); setProgress(5 + ((i+1)/copied.length)*90, etaFrom(start,i+1,copied.length)); }
+        else{ const [a,b]=(range||'').split('-').map(v=>parseInt(v,10)); const del=new Set(); if(!isNaN(a)&&!isNaN(b)){ for(let i=Math.min(a,b)-1;i<=Math.max(a,b)-1;i++) del.add(i); } for(let i=0;i<total;i++) if(!del.has(i)) keep.push(i); }
+        const copied=await out.copyPages(src,keep); for(let i=0;i<copied.length;i++){ out.addPage(copied[i]); setProgress(5+((i+1)/copied.length)*90,etaFrom(start,i+1,copied.length)); }
         const bytes=await out.save(); downloadBlob(new Blob([bytes],{type:'application/pdf'}), f.name.replace(/\.pdf$/i,'')+'_clean.pdf'); setProgress(100,0);
       };},
 
-    pdf2img(){ openModal('PDF → Images (PNG) + ZIP', `
+    pdf2img(){ openModal('PDF → Images (PNG) + ZIP',`
       <div class="grid">
         <input id="file" type="file" accept="application/pdf">
-        <label>Échelle (1–3) <input id="scale" type="number" step="0.25" value="2"></label>
+        <label>Échelle/Qualité (1–3) <input id="scale" type="number" step="0.25" value="1.5"></label>
+        <div id="err" class="inline-err" style="display:none"></div>
         <div id="out" class="grid"></div>
         <button id="go" class="btn primary">Convertir</button>
       </div>`); $('#go').onclick=async()=>{
-        const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
-        const scale=Math.max(1,Math.min(3,parseFloat($('#scale').value||2)));
-        const pdf=await pdfjsLib.getDocument({data:await readAsArrayBuffer(f)}).promise;
-        const out=$('#out'); out.innerHTML=''; const zip=new JSZip(); const start=performance.now();
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute un PDF.'); return; }
+        inlineErr('err',''); const scale=Math.max(1,Math.min(3,parseFloat($('#scale').value||1.5)));
+        const pdf=await pdfjsLib.getDocument({data:await readAsArrayBuffer(f)}).promise; const out=$('#out'); out.innerHTML=''; const zip=new JSZip(); const start=performance.now();
         for(let p=1;p<=pdf.numPages;p++){
-          setProgress((p-1)/pdf.numPages*90+5, etaFrom(start,p-1,pdf.numPages));
+          setProgress((p-1)/pdf.numPages*90+5,etaFrom(start,p-1,pdf.numPages));
           const page=await pdf.getPage(p); const viewport=page.getViewport({scale});
           const canvas=document.createElement('canvas'); const ctx=canvas.getContext('2d');
           canvas.width=viewport.width; canvas.height=viewport.height;
@@ -382,69 +346,61 @@
           const a=document.createElement('a'); a.href=url; a.download=f.name.replace(/\.pdf$/i,'')+`_p${String(p).padStart(3,'0')}.png`; a.textContent='Télécharger page '+p;
           card.appendChild(img); card.appendChild(a); out.appendChild(card);
         }
-        setProgress(95, etaFrom(start,pdf.numPages,pdf.numPages));
+        setProgress(95,etaFrom(start,pdf.numPages,pdf.numPages));
         const zipBlob=await zip.generateAsync({type:'blob'}); downloadBlob(zipBlob, f.name.replace(/\.pdf$/i,'')+'_pages.zip'); setProgress(100,0);
       };},
 
-    img2pdf(){ openModal('Images → PDF', `
+    img2pdf(){ openModal('Images → PDF',`
       <div class="grid">
         <input id="files" type="file" accept="image/*" multiple>
-        <label>Taille page <select id="format">
-          <option value="a4">A4 (portrait)</option><option value="a4l">A4 (paysage)</option><option value="letter">US Letter</option>
-        </select></label>
+        <label>Taille page <select id="format"><option value="a4">A4 (portrait)</option><option value="a4l">A4 (paysage)</option><option value="letter">US Letter</option></select></label>
+        <div id="err" class="inline-err" style="display:none"></div>
         <button id="go" class="btn primary">Générer</button>
       </div>`); $('#go').onclick=async()=>{
-        const files=[...$('#files').files]; if(!files.length) return alert('Ajoute des images');
-        const { jsPDF } = window.jspdf; const sel=$('#format').value; const conf=sel==='a4'?['a4','portrait']:sel==='a4l'?['a4','landscape']:['letter','portrait'];
+        const files=[...$('#files').files]; if(!files.length){ inlineErr('err','Ajoute des images.'); return; }
+        inlineErr('err',''); const { jsPDF }=window.jspdf; const sel=$('#format').value; const conf=sel==='a4'?['a4','portrait']:sel==='a4l'?['a4','landscape']:['letter','portrait'];
         const pdf=new jsPDF({unit:'pt',format:conf[0],orientation:conf[1]}); let first=true; const start=performance.now();
         for(let i=0;i<files.length;i++){
           const f=files[i]; const url=await readAsDataURL(f); const img=new Image(); img.src=url; await img.decode();
           if(!first) pdf.addPage(); first=false;
-          const W=pdf.internal.pageSize.getWidth(), H=pdf.internal.pageSize.getHeight();
-          const r=Math.min(W/img.width,H/img.height,1), w=img.width*r, h=img.height*r, x=(W-w)/2, y=(H-h)/2;
-          pdf.addImage(url,'PNG',x,y,w,h);
-          setProgress(((i+1)/files.length)*95, etaFrom(start,i+1,files.length));
+          const W=pdf.internal.pageSize.getWidth(), H=pdf.internal.pageSize.getHeight(); const r=Math.min(W/img.width,H/img.height,1), w=img.width*r, h=img.height*r, x=(W-w)/2, y=(H-h)/2;
+          pdf.addImage(url,'PNG',x,y,w,h); setProgress(((i+1)/files.length)*95,etaFrom(start,i+1,files.length));
         }
         const blob=pdf.output('blob'); downloadBlob(blob,'images_to_pdf.pdf'); setProgress(100,0);
       };},
 
-    pdf2text(){ openModal('PDF → Texte', `
+    pdf2text(){ openModal('PDF → Texte',`
       <div class="grid">
         <input id="file" type="file" accept="application/pdf">
+        <div id="err" class="inline-err" style="display:none"></div>
         <button id="go" class="btn primary">Extraire</button>
         <textarea id="out" rows="10" placeholder="Texte extrait apparaîtra ici…"></textarea>
         <button id="save" class="btn">Télécharger .txt</button>
       </div>`); $('#go').onclick=async()=>{
-        const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
-        const pdf=await pdfjsLib.getDocument({data:await readAsArrayBuffer(f)}).promise; let all=''; const start=performance.now();
-        for(let p=1;p<=pdf.numPages;p++){
-          const page=await pdf.getPage(p); const content=await page.getTextContent(); const text=content.items.map(i=>i.str).join(' '); all+=text+'\n';
-          setProgress((p/pdf.numPages)*95, etaFrom(start,p,pdf.numPages));
-        }
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute un PDF.'); return; }
+        inlineErr('err',''); const pdf=await pdfjsLib.getDocument({data:await readAsArrayBuffer(f)}).promise; let all=''; const start=performance.now();
+        for(let p=1;p<=pdf.numPages;p++){ const page=await pdf.getPage(p); const content=await page.getTextContent(); const text=content.items.map(i=>i.str).join(' '); all+=text+'\n'; setProgress((p/pdf.numPages)*95,etaFrom(start,p,pdf.numPages)); }
         $('#out').value=all.trim(); setProgress(100,0);
       }; $('#save').onclick=()=>{ const blob=new Blob([$('#out').value||''],{type:'text/plain;charset=utf-8'}); downloadBlob(blob,'extrait.txt'); };},
 
-    watermark(){ openModal('Filigrane (texte)', `
+    watermark(){ openModal('Filigrane (texte)',`
       <div class="grid">
         <input id="file" type="file" accept="application/pdf">
         <label>Texte <input id="txt" type="text" placeholder="CONFIDENTIEL — CRÉATIVE ENTREPRISE"></label>
         <div class="row"><label>Taille <input id="size" type="number" value="48"></label><label>Opacité <input id="op" type="number" min="0.1" max="1" step="0.1" value="0.2"></label></div>
+        <label>Couleur <input id="color" type="color" value="#ffffff"></label>
+        <div id="err" class="inline-err" style="display:none"></div>
         <button id="go" class="btn primary">Appliquer</button>
       </div>`); $('#go').onclick=async()=>{
-        const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
-        const text=$('#txt').value||'CONFIDENTIEL — CRÉATIVE ENTREPRISE'; const size=parseFloat($('#size').value||48); const op=Math.max(.1,Math.min(1,parseFloat($('#op').value||.2)));
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute un PDF.'); return; }
+        inlineErr('err',''); const text=$('#txt').value||'CONFIDENTIEL — CRÉATIVE ENTREPRISE'; const size=parseFloat($('#size').value||48); const op=Math.max(.1,Math.min(1,parseFloat($('#op').value||.2))); const [r,g,b]=hex2rgb($('#color').value);
         const start=performance.now(); setProgress(5);
-        const pdf=await PDFLib.PDFDocument.load(await readAsArrayBuffer(f)); const font=await pdf.embedFont(PDFLib.StandardFonts.HelveticaBold);
-        const pages=pdf.getPages();
-        for(let i=0;i<pages.length;i++){
-          const p=pages[i]; const {width,height}=p.getSize();
-          p.drawText(text,{x:width/6,y:height/2,size,font,color:PDFLib.rgb(1,1,1),rotate:PDFLib.degrees(315),opacity:op});
-          setProgress(5 + ((i+1)/pages.length)*90, etaFrom(start,i+1,pages.length));
-        }
+        const pdf=await PDFLib.PDFDocument.load(await readAsArrayBuffer(f)); const font=await pdf.embedFont(PDFLib.StandardFonts.HelveticaBold); const pages=pdf.getPages();
+        for(let i=0;i<pages.length;i++){ const p=pages[i]; const {width,height}=p.getSize(); p.drawText(text,{x:width/6,y:height/2,size,font,color:PDFLib.rgb(r,g,b),rotate:PDFLib.degrees(315),opacity:op}); setProgress(5+((i+1)/pages.length)*90,etaFrom(start,i+1,pages.length)); }
         const bytes=await pdf.save(); downloadBlob(new Blob([bytes],{type:'application/pdf'}), f.name.replace(/\.pdf$/i,'')+'_watermark.pdf'); setProgress(100,0);
       };},
 
-    imgtools(){ openModal('Rogner / Redimensionner', `
+    imgtools(){ openModal('Rogner / Redimensionner',`
       <div class="grid">
         <input id="file" type="file" accept="image/*">
         <div class="row"><label>Largeur(px) <input id="w" type="number" placeholder="auto"></label><label>Hauteur(px) <input id="h" type="number" placeholder="auto"></label></div>
@@ -460,91 +416,105 @@
       $('#fith').onclick=()=>{ const H=parseInt($('#h').value||0,10); if(!img||!H) return; const r=H/img.height; cvs.height=H; cvs.width=Math.round(img.width*r); draw(); };
       $('#save').onclick=async()=>{ if(!img) return; const tmp=document.createElement('canvas'); tmp.width=sw; tmp.height=sh; tmp.getContext('2d').drawImage(img,sx,sy,sw,sh,0,0,sw,sh); const blob=await canvasToBlob(tmp,'image/png',0.95); downloadBlob(blob,'image_edit.png'); };},
 
-    removebg(){ openModal('Suppression de fond — image (IA)', `
+    removebg(){ openModal('Supprimer le fond — image',`
       <div class="grid">
         <input id="file" type="file" accept="image/*">
-        <button id="go" class="btn primary">Supprimer le fond</button>
+        <label>Mode <select id="mode"><option value="person">Personne (IA)</option><option value="object">Objet (fond clair)</option></select></label>
+        <div class="row"><button id="go" class="btn primary">Traiter</button><button id="save" class="btn">Télécharger PNG</button></div>
         <canvas id="cvs"></canvas>
-        <button id="save" class="btn">Télécharger PNG</button>
-        <p class="muted">Optimisé pour photos de personnes (MediaPipe Selfie Segmentation).</p>
+        <div id="err" class="inline-err" style="display:none"></div>
+        <p class="muted">Si l’IA ne détecte pas bien, passe en mode <b>Objet (fond clair)</b>.</p>
       </div>`); const cvs=$('#cvs'), ctx=cvs.getContext('2d'); let img=null;
       $('#go').onclick=async()=>{
-        const f=$('#file').files[0]; if(!f) return alert('Choisis une image');
-        const url=await readAsDataURL(f); img=new Image(); img.src=url; await img.decode(); cvs.width=img.width; cvs.height=img.height;
-        setProgress(10);
-        const seg=new SelfieSegmentation.SelfieSegmentation({locateFile:(file)=>`https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`}); seg.setOptions({modelSelection:1});
-        seg.onResults(res=>{
-          const mask=res.segmentationMask; const mcv=document.createElement('canvas'); mcv.width=cvs.width; mcv.height=cvs.height; const mctx=mcv.getContext('2d');
-          mctx.drawImage(mask,0,0,cvs.width,cvs.height);
-          const mdata=mctx.getImageData(0,0,cvs.width,cvs.height);
-          const srccv=document.createElement('canvas'); srccv.width=img.width; srccv.height=img.height; srccv.getContext('2d').drawImage(img,0,0);
-          const sdata=srccv.getContext('2d').getImageData(0,0,img.width,img.height);
-          const out=ctx.createImageData(cvs.width,cvs.height);
-          for(let i=0;i<out.data.length;i+=4){ const a=mdata.data[i]; out.data[i]=sdata.data[i]; out.data[i+1]=sdata.data[i+1]; out.data[i+2]=sdata.data[i+2]; out.data[i+3]=a; }
-          ctx.putImageData(out,0,0); setProgress(100,0);
-        });
-        const tmp=document.createElement('canvas'); tmp.width=img.width; tmp.height=img.height; tmp.getContext('2d').drawImage(img,0,0);
-        await seg.send({image:tmp});
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute une image.'); return; }
+        inlineErr('err',''); const url=await readAsDataURL(f); img=new Image(); img.src=url; await img.decode(); cvs.width=img.width; cvs.height=img.height; const mode=$('#mode').value; setProgress(10);
+        if(mode==='person'){
+          const seg=new SelfieSegmentation.SelfieSegmentation({locateFile:(file)=>`https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`}); seg.setOptions({modelSelection:1});
+          seg.onResults(res=>{
+            const mask=res.segmentationMask; const mcv=document.createElement('canvas'); mcv.width=cvs.width; mcv.height=cvs.height; const mctx=mcv.getContext('2d');
+            mctx.drawImage(mask,0,0,cvs.width,cvs.height);
+            const mdata=mctx.getImageData(0,0,cvs.width,cvs.height);
+            const srccv=document.createElement('canvas'); srccv.width=img.width; srccv.height=img.height; srccv.getContext('2d').drawImage(img,0,0);
+            const sdata=srccv.getContext('2d').getImageData(0,0,img.width,img.height);
+            const out=ctx.createImageData(cvs.width,cvs.height);
+            for(let i=0;i<out.data.length;i+=4){ const a=mdata.data[i]; out.data[i]=sdata.data[i]; out.data[i+1]=sdata.data[i+1]; out.data[i+2]=sdata.data[i+2]; out.data[i+3]=a; }
+            ctx.putImageData(out,0,0); setProgress(100,0);
+          });
+          const tmp=document.createElement('canvas'); tmp.width=img.width; tmp.height=img.height; tmp.getContext('2d').drawImage(img,0,0);
+          await seg.send({image:tmp});
+        }else{
+          // Fallback rapide : suppression par luminosité (fond clair)
+          const tmp=document.createElement('canvas'); tmp.width=img.width; tmp.height=img.height; const tctx=tmp.getContext('2d'); tctx.drawImage(img,0,0);
+          const data=tctx.getImageData(0,0,tmp.width,tmp.height);
+          // Estimation seuil: moyenne des 5% pixels les plus lumineux
+          const samples=[]; for(let i=0;i<data.data.length;i+=40){ const r=data.data[i], g=data.data[i+1], b=data.data[i+2]; samples.push(0.2126*r+0.7152*g+0.0722*b); }
+          samples.sort((a,b)=>b-a); const top=samples.slice(0,Math.max(1,Math.floor(samples.length*0.05))); const thr=(top.reduce((a,b)=>a+b,0)/top.length)-8;
+          for(let i=0;i<data.data.length;i+=4){ const r=data.data[i], g=data.data[i+1], b=data.data[i+2]; const L=0.2126*r+0.7152*g+0.0722*b; data.data[i+3]=(L>thr)?0:255; }
+          ctx.putImageData(data,0,0); setProgress(100,0);
+        }
       };
       $('#save').onclick=async()=>{ const blob=await canvasToBlob(cvs,'image/png',0.95); downloadBlob(blob,'image_sans_fond.png'); };},
 
-    img2webp(){ openModal('Image → WebP', `
+    img2webp(){ openModal('Image → WebP',`
       <div class="grid">
         <input id="file" type="file" accept="image/*">
         <label>Qualité (0.3–0.95) <input id="q" type="number" step="0.05" min="0.2" max="1" value="0.8"></label>
+        <div id="err" class="inline-err" style="display:none"></div>
         <button id="go" class="btn primary">Convertir</button>
       </div>`); $('#go').onclick=async()=>{
-        const f=$('#file').files[0]; if(!f) return alert('Choisis une image'); const q=Math.max(.2,Math.min(.95,parseFloat($('#q').value||.8)));
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute une image.'); return; }
+        inlineErr('err',''); const q=Math.max(.2,Math.min(.95,parseFloat($('#q').value||.8)));
         const url=await readAsDataURL(f); const img=new Image(); img.src=url; await img.decode();
         const canvas=document.createElement('canvas'); canvas.width=img.width; canvas.height=img.height; canvas.getContext('2d').drawImage(img,0,0);
-        setProgress(50);
-        const blob=await canvasToBlob(canvas,'image/webp',q); downloadBlob(blob, f.name.replace(/\.[^.]+$/,'')+'.webp'); setProgress(100,0);
+        setProgress(50); const blob=await canvasToBlob(canvas,'image/webp',q); downloadBlob(blob,f.name.replace(/\.[^.]+$/,'')+'.webp'); setProgress(100,0);
       };},
 
-    imgCompress(){ openModal('Compresser image (JPEG/WebP)', `
+    imgCompress(){ openModal('Compresser image (JPEG/WebP)',`
       <div class="grid">
         <input id="file" type="file" accept="image/*">
         <label>Format <select id="fmt"><option value="image/jpeg">JPEG</option><option value="image/webp">WebP</option><option value="image/png">PNG</option></select></label>
         <label>Qualité (0.3–0.95) <input id="q" type="number" step="0.05" min="0.2" max="1" value="0.8"></label>
+        <div id="err" class="inline-err" style="display:none"></div>
         <button id="go" class="btn primary">Compresser</button>
       </div>`); $('#go').onclick=async()=>{
-        const f=$('#file').files[0]; if(!f) return alert('Choisis une image'); const q=Math.max(.2,Math.min(.95,parseFloat($('#q').value||.8))); const fmt=$('#fmt').value;
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute une image.'); return; }
+        inlineErr('err',''); const q=Math.max(.2,Math.min(.95,parseFloat($('#q').value||.8))); const fmt=$('#fmt').value;
         const url=await readAsDataURL(f); const img=new Image(); img.src=url; await img.decode();
         const canvas=document.createElement('canvas'); canvas.width=img.width; canvas.height=img.height; canvas.getContext('2d').drawImage(img,0,0);
-        setProgress(50);
-        const blob=await canvasToBlob(canvas,fmt,q); const ext = fmt==='image/jpeg'?'.jpg':fmt==='image/webp'?'.webp':'.png';
-        downloadBlob(blob, f.name.replace(/\.[^.]+$/,'')+ext); setProgress(100,0);
+        setProgress(50); const blob=await canvasToBlob(canvas,fmt,q); const ext=fmt==='image/jpeg'?'.jpg':fmt==='image/webp'?'.webp':'.png'; downloadBlob(blob,f.name.replace(/\.[^.]+$/,'')+ext); setProgress(100,0);
       };},
 
-    txt2pdf(){ openModal('TXT → PDF', `
+    txt2pdf(){ openModal('TXT → PDF',`
       <div class="grid">
         <input id="file" type="file" accept=".txt,.md,.markdown">
+        <div id="err" class="inline-err" style="display:none"></div>
         <button id="go" class="btn primary">Convertir</button>
       </div>`); $('#go').onclick=async()=>{
-        const f=$('#file').files[0]; if(!f) return alert('Choisis un .txt/.md');
-        const { jsPDF } = window.jspdf; const pdf=new jsPDF({unit:'pt',format:'a4'}); const text=await (await f.text()); const lines=pdf.splitTextToSize(text,520); let y=60; const start=performance.now();
-        for(let i=0;i<lines.length;i++){ const ln=lines[i]; if(y>760){ pdf.addPage(); y=60; } pdf.text(40,y,ln); y+=16; if(i%50===0) setProgress((i/lines.length)*95, etaFrom(start,i,lines.length)); }
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute un fichier texte.'); return; }
+        inlineErr('err',''); const { jsPDF }=window.jspdf; const pdf=new jsPDF({unit:'pt',format:'a4'}); const text=await (await f.text()); const lines=pdf.splitTextToSize(text,520); let y=60; const start=performance.now();
+        for(let i=0;i<lines.length;i++){ const ln=lines[i]; if(y>760){ pdf.addPage(); y=60; } pdf.text(40,y,ln); y+=16; if(i%50===0) setProgress((i/lines.length)*95,etaFrom(start,i,lines.length)); }
         const blob=pdf.output('blob'); downloadBlob(blob, f.name.replace(/\.(txt|md|markdown)$/i,'')+'.pdf'); setProgress(100,0);
       };},
 
-    text2pdf(){ openModal('Texte collé → PDF', `
+    text2pdf(){ openModal('Texte collé → PDF',`
       <div class="grid">
         <textarea id="txt" rows="10" placeholder="Colle ici ton texte…"></textarea>
         <button id="go" class="btn primary">Créer le PDF</button>
       </div>`); $('#go').onclick=()=>{
-        const val=$('#txt').value||''; if(!val.trim()) return alert('Colle du texte'); const { jsPDF }=window.jspdf; const pdf=new jsPDF({unit:'pt',format:'a4'}); const lines=pdf.splitTextToSize(val,520); let y=60;
+        const val=$('#txt').value||''; if(!val.trim()) return; const { jsPDF }=window.jspdf; const pdf=new jsPDF({unit:'pt',format:'a4'}); const lines=pdf.splitTextToSize(val,520); let y=60;
         for(const ln of lines){ if(y>760){ pdf.addPage(); y=60; } pdf.text(40,y,ln); y+=16; } const blob=pdf.output('blob'); downloadBlob(blob,'texte.pdf'); setProgress(100,0);
       };},
 
-    compressPdf(){ openModal('Compresser PDF (rapide — raster)', `
+    compressPdf(){ openModal('Compresser PDF (rapide — raster)',`
       <div class="grid">
         <input id="file" type="file" accept="application/pdf">
         <label>Qualité images (0.3–0.95) <input id="q" type="number" step="0.05" min="0.2" max="1" value="0.7"></label>
         <label>Largeur max (px) <input id="mw" type="number" value="1600"></label>
+        <div id="err" class="inline-err" style="display:none"></div>
         <button id="go" class="btn primary">Compresser</button>
       </div>`); $('#go').onclick=async()=>{
-        const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
-        const q=Math.max(.2,Math.min(.95,parseFloat($('#q').value||.7))); const maxW=parseInt($('#mw').value||1600,10);
+        const f=$('#file').files[0]; if(!f){ inlineErr('err','Ajoute un PDF.'); return; }
+        inlineErr('err',''); const q=Math.max(.2,Math.min(.95,parseFloat($('#q').value||.7))); const maxW=parseInt($('#mw').value||1600,10);
         const src=new Uint8Array(await readAsArrayBuffer(f)); const pdf=await pdfjsLib.getDocument({data:src}).promise; const out=await PDFLib.PDFDocument.create(); const start=performance.now();
         for(let p=1;p<=pdf.numPages;p++){
           const page=await pdf.getPage(p); const viewport=page.getViewport({scale:2});
@@ -553,10 +523,10 @@
           await page.render({canvasContext:ctx,viewport:page.getViewport({scale:canvas.width/viewport.width})}).promise;
           const blob=await canvasToBlob(canvas,'image/jpeg',q); const arr=new Uint8Array(await blob.arrayBuffer());
           const img=await out.embedJpg(arr); const pg=out.addPage([img.width,img.height]); pg.drawImage(img,{x:0,y:0,width:img.width,height:img.height});
-          setProgress((p/pdf.numPages)*95, etaFrom(start,p,pdf.numPages));
+          setProgress((p/pdf.numPages)*95,etaFrom(start,p,pdf.numPages));
         }
         const bytes=await out.save(); downloadBlob(new Blob([bytes],{type:'application/pdf'}), f.name.replace(/\.pdf$/i,'')+'_compressed.pdf'); setProgress(100,0);
-      };}
+      };},
   };
 
   function parseRanges(ranges){
