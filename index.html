@@ -1,10 +1,574 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/style.css">
-<title>Créative Entreprise</title></head><body>
-<header><div class="container"><h1>Créative Entreprise</h1>
-<nav><a href="index.html">Accueil</a><a href="services.html">Services</a>
-<a href="contact.html">Contact</a></nav></div></header>
-<main class="container"><h2>Bienvenue</h2>
-<p>Nous créons des sites web, applis mobiles, logos, publicités et plus.</p>
-<a href="https://www.facebook.com/share/16WSwBEq3M/?mibextid=wwXIfr" class="btn">Notre Facebook</a></main>
-<footer>© 2025 Créative Entreprise</footer></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Créative Entreprise — Suite PDF/IMG (type iLovePDF, 100% navigateur)</title>
+<meta name="theme-color" content="#0b102a">
+<style>
+  :root{
+    --bg1:#07091a;--bg2:#0c1030;--line:#1f2a64;--txt:#e9f0ff;--muted:#a7b7ff;
+    --ac:#7aa2ff;--ok:#35e0a1;--ko:#ff6b6b;--tile:#151a48;
+  }
+  *{box-sizing:border-box} html,body{height:100%}
+  body{margin:0;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--txt);
+    font-family:system-ui,Segoe UI,Inter,Roboto,Arial,sans-serif;display:flex;align-items:center;justify-content:center}
+  .app{width:min(1200px,98vw);height:min(900px,96vh);border:1px solid var(--line);border-radius:16px;
+    background:linear-gradient(180deg,rgba(19,24,62,.92),rgba(9,12,34,.92));overflow:hidden;box-shadow:0 10px 50px rgba(0,0,0,.45);position:relative}
+  header{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:12px;border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,rgba(26,33,90,.9),rgba(14,18,48,.9))}
+  .brand{font-weight:800;letter-spacing:.02em}
+  .muted{color:var(--muted)} .ok{color:var(--ok)} .ko{color:var(--ko)}
+  main{display:grid;grid-template-columns:320px 1fr;gap:12px;height:calc(100% - 60px);padding:12px}
+  aside{border:1px solid var(--line);border-radius:14px;padding:10px;overflow:auto}
+  section.panel{border:1px solid var(--line);border-radius:14px;padding:10px;overflow:auto}
+  h2{margin:.2rem 0 .4rem;font-size:18px}
+  .grid{display:grid;gap:10px}
+  .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .tile{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);
+    border-radius:12px;padding:12px;cursor:pointer}
+  .tile:hover{outline:2px solid #2a3aa8}
+  .btn{appearance:none;border:1px solid var(--line);background:linear-gradient(180deg,rgba(25,31,84,.9),rgba(16,18,48,.9));
+    color:#e6f7ff;border-radius:10px;padding:.6rem .8rem;cursor:pointer}
+  .btn.primary{background:linear-gradient(135deg,#00e5ff,#7aa2ff);color:#07122a;border-color:transparent;font-weight:800}
+  input[type=file],input[type=text],input[type=number],textarea,select{width:100%;padding:.6rem;border-radius:10px;border:1px solid #2a3688;background:#0b0f26;color:#e6f7ff}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .row > *{flex:1}
+  .card{border:1px solid var(--line);border-radius:12px;padding:10px;background:rgba(255,255,255,.04)}
+  canvas,img{max-width:100%}
+  footer{position:absolute;left:0;right:0;bottom:0;border-top:1px solid var(--line);padding:8px 12px;font-size:.9rem;color:var(--muted);
+    display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(14,18,48,.9),rgba(8,10,28,.9))}
+  .chip{padding:.2rem .45rem;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.05);font-variant-numeric:tabular-nums}
+  @media (max-width:980px){ main{grid-template-columns:1fr} .tiles{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="app" role="application" aria-label="Suite PDF/IMG — Créative Entreprise">
+  <header>
+    <div class="brand">🌌 <b>Créative Entreprise</b> — Suite PDF/IMG</div>
+    <div class="muted">100% navigateur • Gratuit • GitHub Pages</div>
+  </header>
+
+  <main>
+    <aside id="menu">
+      <div class="grid">
+        <div class="tiles">
+          <div class="tile" data-tool="merge"><b>Fusionner PDF</b><br><span class="muted">Assembler plusieurs PDF</span></div>
+          <div class="tile" data-tool="split"><b>Séparer PDF</b><br><span class="muted">Extraire des pages</span></div>
+          <div class="tile" data-tool="reorder"><b>Réorganiser/Rotation</b><br><span class="muted">Drag & rotate</span></div>
+          <div class="tile" data-tool="compress"><b>Compresser PDF</b><br><span class="muted">Réduire la taille</span></div>
+          <div class="tile" data-tool="watermark"><b>Filigrane PDF</b><br><span class="muted">Texte en superposition</span></div>
+          <div class="tile" data-tool="pdf2img"><b>PDF → Images</b><br><span class="muted">PNG par page</span></div>
+          <div class="tile" data-tool="img2pdf"><b>Images → PDF</b><br><span class="muted">Multi‑images → 1 PDF</span></div>
+          <div class="tile" data-tool="pdf2text"><b>PDF → Texte</b><br><span class="muted">Extraction du texte</span></div>
+          <div class="tile" data-tool="pdfimages"><b>Extraire images du PDF</b><br><span class="muted">Toutes les images</span></div>
+          <div class="tile" data-tool="imgtools"><b>Rogner / Redimensionner</b><br><span class="muted">Outils image</span></div>
+          <div class="tile" data-tool="removebg"><b>Supprimer fond (image)</b><br><span class="muted">Segmentation IA</span></div>
+          <div class="tile" data-tool="txt2pdf"><b>TXT → PDF</b><br><span class="muted">Bloc de texte → PDF</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="panel" id="panel">
+      <div class="card">
+        <h2>Bienvenue 👋</h2>
+        <p>Choisis un outil à gauche. Tout est traité <b>localement</b> dans ton navigateur, sans serveur.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>Besoin d’une fonctionnalité en plus ? Dis‑moi et je l’ajoute.</div>
+    <div class="chip" id="status">Prêt ✅</div>
+  </footer>
+</div>
+
+<!-- Librairies CDN -->
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.js"></script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.worker.min.js";</script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
+
+<script>
+(()=>{'use strict';
+const $=(s,r=document)=>r.querySelector(s); const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const setStatus = t=> $('#status').textContent = t;
+$('#menu').addEventListener('click', e=>{
+  const tile = e.target.closest('.tile'); if(!tile) return;
+  const tool = tile.dataset.tool;
+  (builders[tool]||builders.home)();
+  setStatus('Prêt ✅');
+});
+
+const builders = {
+  home(){ $('#panel').innerHTML='<div class="card"><h2>Bienvenue</h2><p>Choisis un outil à gauche.</p></div>'; },
+  merge: uiMerge,
+  split: uiSplit,
+  reorder: uiReorder,
+  compress: uiCompress,
+  watermark: uiWatermark,
+  pdf2img: uiPDF2IMG,
+  img2pdf: uiIMG2PDF,
+  pdf2text: uiPDF2TEXT,
+  pdfimages: uiPDFImages,
+  imgtools: uiIMGTools,
+  removebg: uiRemoveBG,
+  txt2pdf: uiTXT2PDF
+};
+
+/* Utilities */
+function downloadBlob(blob, name){ saveAs(blob, name); }
+async function readAsArrayBuffer(file){ return await file.arrayBuffer(); }
+async function readAsDataURL(file){ return await new Promise((res,rej)=>{ const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=rej; fr.readAsDataURL(file); }); }
+function canvasToBlob(canvas, type='image/png', quality=0.92){ return new Promise(res=>canvas.toBlob(b=>res(b),type,quality)); }
+
+/* ====== Merge PDFs ====== */
+function uiMerge(){
+  $('#panel').innerHTML = `
+    <div class="card"><h2>Fusionner des PDF</h2>
+      <div class="grid">
+        <input id="files" type="file" accept="application/pdf" multiple>
+        <button id="go" class="btn primary">Fusionner</button>
+      </div>
+    </div>`;
+  $('#go').onclick = async ()=>{
+    const files=[...$('#files').files]; if(!files.length) return alert('Ajoute des PDFs');
+    setStatus('Fusion…');
+    const out = await PDFLib.PDFDocument.create();
+    for(const f of files){
+      const src = await PDFLib.PDFDocument.load(await readAsArrayBuffer(f));
+      const copied = await out.copyPages(src, src.getPageIndices());
+      copied.forEach(p=> out.addPage(p));
+    }
+    const bytes = await out.save();
+    downloadBlob(new Blob([bytes],{type:'application/pdf'}), 'fusion.pdf');
+    setStatus('Terminé ✅');
+  };
+}
+
+/* ====== Split PDF ====== */
+function uiSplit(){
+  $('#panel').innerHTML = `
+    <div class="card"><h2>Séparer / Extraire des pages</h2>
+      <div class="grid">
+        <input id="file" type="file" accept="application/pdf">
+        <label>Pages (ex: 1-3,5,7) <input id="ranges" type="text" placeholder="1-3,5,7"></label>
+        <button id="go" class="btn primary">Extraire</button>
+      </div>
+    </div>`;
+  $('#go').onclick = async ()=>{
+    const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
+    const ranges = parseRanges($('#ranges').value.trim());
+    setStatus('Extraction…');
+    const src = await PDFLib.PDFDocument.load(await readAsArrayBuffer(f));
+    const out = await PDFLib.PDFDocument.create();
+    const pages = (ranges.length? ranges : src.getPageIndices().map(i=>i+1)).map(n=>n-1).filter(i=> i>=0 && i<src.getPageCount());
+    const copied = await out.copyPages(src, pages);
+    copied.forEach(p=> out.addPage(p));
+    const bytes = await out.save();
+    downloadBlob(new Blob([bytes],{type:'application/pdf'}), f.name.replace(/\.pdf$/i,'')+'_extrait.pdf');
+    setStatus('Terminé ✅');
+  };
+}
+function parseRanges(ranges){
+  if(!ranges) return [];
+  const parts = ranges.split(',').map(s=>s.trim()).filter(Boolean);
+  const out = new Set();
+  for(const part of parts){
+    if(part.includes('-')){
+      const [a,b]=part.split('-').map(v=>parseInt(v,10));
+      for(let i=Math.min(a,b); i<=Math.max(a,b); i++) out.add(i);
+    }else{ const v=parseInt(part,10); if(!isNaN(v)) out.add(v); }
+  }
+  return [...out].sort((x,y)=>x-y);
+}
+
+/* ====== Reorder/Rotate ====== */
+function uiReorder(){
+  $('#panel').innerHTML = `
+    <div class="card"><h2>Réorganiser / Rotation de pages</h2>
+      <div class="grid">
+        <input id="file" type="file" accept="application/pdf">
+        <div id="pages" class="grid" style="grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px"></div>
+        <button id="save" class="btn primary">Exporter PDF</button>
+      </div>
+    </div>`;
+  let srcPdf, order=[], rotations=[];
+  $('#file').onchange = async ()=>{
+    const f=$('#file').files[0]; if(!f) return;
+    setStatus('Rendu des miniatures…');
+    const arr = await readAsArrayBuffer(f);
+    const pdf = await pdfjsLib.getDocument({data:arr}).promise;
+    srcPdf = await PDFLib.PDFDocument.load(arr);
+    order = Array.from({length: pdf.numPages}, (_,i)=>i);
+    rotations = order.map(()=>0);
+    const list = $('#pages'); list.innerHTML='';
+    for(let i=1;i<=pdf.numPages;i++){
+      const page = await pdf.getPage(i);
+      const viewport = page.getViewport({scale:.4});
+      const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
+      canvas.width = viewport.width; canvas.height = viewport.height;
+      await page.render({canvasContext:ctx,viewport}).promise;
+      const card = document.createElement('div'); card.className='card'; card.draggable=true; card.dataset.idx=(i-1);
+      card.innerHTML = `<div class="row" style="align-items:flex-start"><img src="${canvas.toDataURL()}" style="width:100%"></div>
+        <div class="row"><button class="btn rotL">⟲</button><button class="btn rotR">⟳</button></div>`;
+      list.appendChild(card);
+    }
+    // drag & drop
+    let dragEl=null;
+    list.addEventListener('dragstart', e=>{ dragEl=e.target.closest('.card'); e.dataTransfer.setData('text/plain','x');});
+    list.addEventListener('dragover', e=>{ e.preventDefault(); const tgt=e.target.closest('.card'); if(!tgt||tgt===dragEl) return; const b=tgt.getBoundingClientRect(); const after=(e.clientY-b.top)>(b.height/2); list.insertBefore(dragEl, after?tgt.nextSibling:tgt); });
+    list.addEventListener('drop', ()=>{ order=[...list.children].map(c=>parseInt(c.dataset.idx,10)); });
+
+    list.addEventListener('click', e=>{
+      const card = e.target.closest('.card'); if(!card) return;
+      const idx = parseInt(card.dataset.idx,10);
+      if(e.target.classList.contains('rotL')) rotations[idx]=(rotations[idx]-90)%360;
+      if(e.target.classList.contains('rotR')) rotations[idx]=(rotations[idx]+90)%360;
+      setStatus(`Rotation page ${idx+1}: ${rotations[idx]}°`);
+    });
+    setStatus('Prêt ✅ (drag pour réordonner; ⟲/⟳ pour pivoter)');
+  };
+
+  $('#save').onclick = async ()=>{
+    if(!srcPdf) return alert('Ajoute un PDF');
+    setStatus('Génération du PDF…');
+    const out = await PDFLib.PDFDocument.create();
+    for(const srcIndex of order){
+      const [copied] = await out.copyPages(srcPdf, [srcIndex]);
+      if(rotations[srcIndex]) copied.setRotation(PDFLib.degrees((rotations[srcIndex]+360)%360));
+      out.addPage(copied);
+    }
+    const bytes = await out.save();
+    downloadBlob(new Blob([bytes],{type:'application/pdf'}), 'reorganise.pdf');
+    setStatus('Terminé ✅');
+  };
+}
+
+/* ====== Compress PDF (downscale images) ====== */
+function uiCompress(){
+  $('#panel').innerHTML = `
+    <div class="card"><h2>Compresser PDF</h2>
+      <div class="grid">
+        <input id="file" type="file" accept="application/pdf">
+        <label>Qualité images (0.3–0.95) <input id="q" type="number" step="0.05" min="0.2" max="1" value="0.7"></label>
+        <label>Largeur max (px) <input id="mw" type="number" value="1600"></label>
+        <button id="go" class="btn primary">Compresser</button>
+      </div>
+      <p class="muted small">Astuce : ré‑intègre les images en JPEG compressé, conserve le texte vectoriel.</p>
+    </div>`;
+  $('#go').onclick = async ()=>{
+    const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
+    const quality = Math.max(0.2, Math.min(0.95, parseFloat($('#q').value||0.7)));
+    const maxW = parseInt($('#mw').value||1600,10);
+    setStatus('Compression…');
+    const srcBytes = new Uint8Array(await readAsArrayBuffer(f));
+    const srcPdf = await PDFLib.PDFDocument.load(srcBytes);
+    const out = await PDFLib.PDFDocument.create();
+    const pages = await out.copyPages(srcPdf, srcPdf.getPageIndices());
+    pages.forEach(p=> out.addPage(p));
+    // NOTE: pdf-lib ne ré-échantillonne pas les XObjects existants directement.
+    // Approche pragmatique : rasteriser chaque page via pdf.js puis réinsérer en image (perd la sélection de texte).
+    // On propose les deux modes : "Raster global" si besoin.
+    const raster = confirm('Mode rapide : rasteriser toutes les pages en images (taille réduite mais texte non sélectionnable). OK = Oui / Annuler = Non');
+    if(raster){
+      const pdf = await pdfjsLib.getDocument({data:srcBytes}).promise;
+      const out2 = await PDFLib.PDFDocument.create();
+      for(let i=1;i<=pdf.numPages;i++){
+        const page = await pdf.getPage(i);
+        const viewport = page.getViewport({scale:2});
+        const canvas=document.createElement('canvas'); const ctx=canvas.getContext('2d');
+        canvas.width = Math.min(viewport.width, maxW);
+        canvas.height = Math.round(canvas.width * (viewport.height/viewport.width));
+        await page.render({canvasContext:ctx, viewport: page.getViewport({scale: canvas.width/viewport.width})}).promise;
+        const blob = await canvasToBlob(canvas, 'image/jpeg', quality);
+        const arr = new Uint8Array(await blob.arrayBuffer());
+        const img = await out2.embedJpg(arr);
+        const pg = out2.addPage([img.width, img.height]);
+        pg.drawImage(img, {x:0,y:0,width:img.width,height:img.height});
+      }
+      const bytes = await out2.save();
+      downloadBlob(new Blob([bytes],{type:'application/pdf'}), f.name.replace(/\.pdf$/i,'')+'_compressed.pdf');
+    }else{
+      // Sinon, on renvoie le PDF original (sans re-sampling complet) pour éviter fausse promesse
+      const bytes = await out.save();
+      downloadBlob(new Blob([bytes],{type:'application/pdf'}), f.name.replace(/\.pdf$/i,'')+'_copy.pdf');
+    }
+    setStatus('Terminé ✅');
+  };
+}
+
+/* ====== Watermark ====== */
+function uiWatermark(){
+  $('#panel').innerHTML = `
+  <div class="card"><h2>Filigrane (texte)</h2>
+    <div class="grid">
+      <input id="file" type="file" accept="application/pdf">
+      <label>Texte <input id="txt" type="text" placeholder="CONFIDENTIEL — Créative Entreprise"></label>
+      <label>Taille <input id="size" type="number" value="48"></label>
+      <label>Opacité (0.1–1) <input id="op" type="number" min="0.1" max="1" step="0.1" value="0.2"></label>
+      <button id="go" class="btn primary">Appliquer</button>
+    </div>
+  </div>`;
+  $('#go').onclick = async ()=>{
+    const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
+    const text = $('#txt').value || 'CONFIDENTIEL — Créative Entreprise';
+    const size = parseFloat($('#size').value||48);
+    const op = Math.max(.1, Math.min(1, parseFloat($('#op').value||.2)));
+    setStatus('Application du filigrane…');
+    const src = await PDFLib.PDFDocument.load(await readAsArrayBuffer(f));
+    const font = await src.embedFont(PDFLib.StandardFonts.HelveticaBold);
+    const pages = src.getPages();
+    pages.forEach(p=>{
+      const { width, height } = p.getSize();
+      p.drawText(text, {
+        x: width/6, y: height/2,
+        size, font, color: PDFLib.rgb(1,1,1),
+        rotate: PDFLib.degrees(315), opacity: op
+      });
+    });
+    const bytes = await src.save();
+    downloadBlob(new Blob([bytes],{type:'application/pdf'}), f.name.replace(/\.pdf$/i,'')+'_watermark.pdf');
+    setStatus('Terminé ✅');
+  };
+}
+
+/* ====== PDF → Images ====== */
+function uiPDF2IMG(){
+  $('#panel').innerHTML = `
+    <div class="card"><h2>PDF → PNG (par page)</h2>
+      <div class="grid">
+        <input id="file" type="file" accept="application/pdf">
+        <label>Échelle (1–3) <input id="scale" type="number" step="0.25" value="2"></label>
+        <div id="out" class="grid"></div>
+        <button id="go" class="btn primary">Convertir</button>
+      </div>
+    </div>`;
+  $('#go').onclick = async ()=>{
+    const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
+    const scale = Math.max(1, Math.min(3, parseFloat($('#scale').value||2)));
+    setStatus('Rendu…');
+    const pdf = await pdfjsLib.getDocument({data:await readAsArrayBuffer(f)}).promise;
+    const out=$('#out'); out.innerHTML='';
+    for(let p=1;p<=pdf.numPages;p++){
+      const page = await pdf.getPage(p);
+      const viewport = page.getViewport({scale});
+      const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
+      canvas.width=viewport.width; canvas.height=viewport.height;
+      await page.render({canvasContext:ctx,viewport}).promise;
+      const blob = await canvasToBlob(canvas,'image/png',0.95);
+      const url = URL.createObjectURL(blob);
+      const card = document.createElement('div'); card.className='card';
+      const img = new Image(); img.src=url; img.style.maxWidth='100%';
+      const a = document.createElement('a'); a.href=url; a.download=f.name.replace(/\.pdf$/i,'')+`_p${String(p).padStart(3,'0')}.png`; a.textContent='Télécharger page '+p;
+      card.appendChild(img); card.appendChild(a); out.appendChild(card);
+    }
+    setStatus('Terminé ✅');
+  };
+}
+
+/* ====== Images → PDF ====== */
+function uiIMG2PDF(){
+  $('#panel').innerHTML = `
+    <div class="card"><h2>Images → PDF</h2>
+      <div class="grid">
+        <input id="files" type="file" accept="image/*" multiple>
+        <label>Taille page <select id="format">
+          <option value="a4">A4 (portrait)</option><option value="a4l">A4 (paysage)</option>
+          <option value="letter">US Letter</option>
+        </select></label>
+        <button id="go" class="btn primary">Générer</button>
+      </div>
+    </div>`;
+  $('#go').onclick = async ()=>{
+    const files=[...$('#files').files]; if(!files.length) return alert('Ajoute des images');
+    setStatus('Création…');
+    const { jsPDF } = window.jspdf;
+    const fmtSel = $('#format').value;
+    const conf = fmtSel==='a4' ? ['a4','portrait'] : fmtSel==='a4l' ? ['a4','landscape'] : ['letter','portrait'];
+    const pdf = new jsPDF({unit:'pt', format:conf[0], orientation:conf[1]});
+    let first=true;
+    for(const f of files){
+      const url=await readAsDataURL(f); const img=new Image(); img.src=url; await img.decode();
+      if(!first) pdf.addPage(); first=false;
+      const pageW=pdf.internal.pageSize.getWidth(), pageH=pdf.internal.pageSize.getHeight();
+      const r=Math.min(pageW/img.width, pageH/img.height, 1);
+      const w=img.width*r, h=img.height*r; const x=(pageW-w)/2, y=(pageH-h)/2;
+      pdf.addImage(url, 'PNG', x, y, w, h);
+    }
+    const blob = pdf.output('blob');
+    downloadBlob(blob, 'images_to_pdf.pdf');
+    setStatus('Terminé ✅');
+  };
+}
+
+/* ====== PDF → Texte ====== */
+function uiPDF2TEXT(){
+  $('#panel').innerHTML = `
+    <div class="card"><h2>PDF → Texte</h2>
+      <div class="grid">
+        <input id="file" type="file" accept="application/pdf">
+        <button id="go" class="btn primary">Extraire</button>
+        <textarea id="out" rows="12" placeholder="Texte extrait apparaîtra ici…"></textarea>
+        <button id="save" class="btn">Télécharger .txt</button>
+      </div>
+    </div>`;
+  $('#go').onclick = async ()=>{
+    const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
+    setStatus('Extraction du texte…');
+    const pdf = await pdfjsLib.getDocument({data:await readAsArrayBuffer(f)}).promise;
+    let all='';
+    for(let p=1;p<=pdf.numPages;p++){
+      const page = await pdf.getPage(p);
+      const content = await page.getTextContent();
+      const text = content.items.map(i=>i.str).join(' ');
+      all += text + '\n';
+    }
+    $('#out').value = all.trim();
+    setStatus('Terminé ✅');
+  };
+  $('#save').onclick = ()=>{
+    const blob = new Blob([$('#out').value||''], {type:'text/plain;charset=utf-8'});
+    downloadBlob(blob, 'extrait.txt');
+  };
+}
+
+/* ====== Extraire images du PDF ====== */
+function uiPDFImages(){
+  $('#panel').innerHTML = `
+    <div class="card"><h2>Extraire les images d’un PDF</h2>
+      <div class="grid">
+        <input id="file" type="file" accept="application/pdf">
+        <div id="out" class="grid"></div>
+        <button id="go" class="btn primary">Extraire</button>
+      </div>
+      <p class="muted small">Technique : rendu par page (pdf.js) puis export PNG — efficace pour récupérer tout visuel.</p>
+    </div>`;
+  $('#go').onclick = async ()=>{
+    const f=$('#file').files[0]; if(!f) return alert('Choisis un PDF');
+    setStatus('Rendu…');
+    const pdf = await pdfjsLib.getDocument({data:await readAsArrayBuffer(f)}).promise;
+    const out=$('#out'); out.innerHTML='';
+    for(let p=1;p<=pdf.numPages;p++){
+      const page = await pdf.getPage(p);
+      const viewport = page.getViewport({scale:2});
+      const canvas=document.createElement('canvas'); const ctx=canvas.getContext('2d');
+      canvas.width=viewport.width; canvas.height=viewport.height;
+      await page.render({canvasContext:ctx,viewport}).promise;
+      const blob = await canvasToBlob(canvas,'image/png',0.95);
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a'); a.href=url; a.download=f.name.replace(/\.pdf$/i,'')+`_page${String(p).padStart(3,'0')}.png`; a.textContent='Télécharger page '+p;
+      const card=document.createElement('div'); card.className='card'; const img=new Image(); img.src=url; img.style.maxWidth='100%';
+      card.appendChild(img); card.appendChild(a); out.appendChild(card);
+    }
+    setStatus('Terminé ✅');
+  };
+}
+
+/* ====== Outils image (rogner/redimensionner) ====== */
+function uiIMGTools(){
+  $('#panel').innerHTML = `
+    <div class="card"><h2>Rogner / Redimensionner</h2>
+      <div class="grid">
+        <input id="file" type="file" accept="image/*">
+        <div class="row">
+          <label>Largeur(px) <input id="w" type="number" placeholder="auto"></label>
+          <label>Hauteur(px) <input id="h" type="number" placeholder="auto"></label>
+        </div>
+        <canvas id="cvs"></canvas>
+        <div class="row">
+          <button id="fitw" class="btn">Adapter largeur</button>
+          <button id="fith" class="btn">Adapter hauteur</button>
+          <button id="save" class="btn primary">Télécharger PNG</button>
+        </div>
+      </div>
+    </div>`;
+  const cvs=$('#cvs'), ctx=cvs.getContext('2d'); let img=null,sx=0,sy=0,sw=0,sh=0,drag=false,ax=0,ay=0;
+  $('#file').onchange = async ()=>{
+    const f=$('#file').files[0]; if(!f) return;
+    const url=await readAsDataURL(f); img=new Image(); img.src=url; await img.decode();
+    cvs.width=img.width; cvs.height=img.height; sx=0; sy=0; sw=img.width; sh=img.height; draw();
+  };
+  function draw(){ if(!img) return; ctx.clearRect(0,0,cvs.width,cvs.height); ctx.drawImage(img,0,0); ctx.strokeStyle='#7aa2ff'; ctx.lineWidth=2; ctx.strokeRect(sx,sy,sw,sh); }
+  cvs.onmousedown=e=>{ if(!img) return; drag=true; ax=e.offsetX; ay=e.offsetY; sx=ax; sy=ay; sw=10; sh=10; draw(); };
+  cvs.onmousemove=e=>{ if(!drag) return; sw=Math.max(10,e.offsetX-ax); sh=Math.max(10,e.offsetY-ay); draw(); };
+  cvs.onmouseup=()=> drag=false;
+  $('#fitw').onclick=()=>{ const W=parseInt($('#w').value||0,10); if(!img||!W) return; const r=W/img.width; cvs.width=W; cvs.height=Math.round(img.height*r); draw(); };
+  $('#fith').onclick=()=>{ const H=parseInt($('#h').value||0,10); if(!img||!H) return; const r=H/img.height; cvs.height=H; cvs.width=Math.round(img.width*r); draw(); };
+  $('#save').onclick=async()=>{
+    if(!img) return; const tmp=document.createElement('canvas'); tmp.width=sw; tmp.height=sh;
+    tmp.getContext('2d').drawImage(img,sx,sy,sw,sh,0,0,sw,sh); const blob=await canvasToBlob(tmp,'image/png',0.95);
+    downloadBlob(blob,'image_edit.png');
+  };
+}
+
+/* ====== Supprimer fond (image) ====== */
+function uiRemoveBG(){
+  $('#panel').innerHTML = `
+    <div class="card"><h2>Suppression de fond — image</h2>
+      <div class="grid">
+        <input id="file" type="file" accept="image/*">
+        <button id="go" class="btn primary">Supprimer le fond</button>
+        <canvas id="cvs"></canvas>
+        <button id="save" class="btn">Télécharger PNG</button>
+        <p class="muted small">Optimisé pour photos de personnes (MediaPipe Selfie Segmentation). Résultat variable pour objets.</p>
+      </div>
+    </div>`;
+  const cvs=$('#cvs'), ctx=cvs.getContext('2d'); let img=null;
+  $('#go').onclick = async ()=>{
+    const f=$('#file').files[0]; if(!f) return alert('Choisis une image');
+    setStatus('Segmentation IA…');
+    const url=await readAsDataURL(f); img=new Image(); img.src=url; await img.decode();
+    cvs.width=img.width; cvs.height=img.height;
+    const seg = new SelfieSegmentation.SelfieSegmentation({locateFile:(file)=>`https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`});
+    seg.setOptions({modelSelection:1});
+    seg.onResults(res=>{
+      const mask = res.segmentationMask;
+      const mcv=document.createElement('canvas'); mcv.width=cvs.width; mcv.height=cvs.height; const mctx=mcv.getContext('2d');
+      mctx.drawImage(mask,0,0,cvs.width,cvs.height);
+      const mdata=mctx.getImageData(0,0,cvs.width,cvs.height);
+      const srccv=document.createElement('canvas'); srccv.width=img.width; srccv.height=img.height; srccv.getContext('2d').drawImage(img,0,0);
+      const sdata=srccv.getContext('2d').getImageData(0,0,img.width,img.height);
+      const out=ctx.createImageData(cvs.width,cvs.height);
+      for(let i=0;i<out.data.length;i+=4){
+        const a=mdata.data[i]; out.data[i]=sdata.data[i]; out.data[i+1]=sdata.data[i+1]; out.data[i+2]=sdata.data[i+2]; out.data[i+3]=a;
+      }
+      ctx.putImageData(out,0,0);
+      setStatus('Terminé ✅');
+    });
+    const tmp=document.createElement('canvas'); tmp.width=img.width; tmp.height=img.height; tmp.getContext('2d').drawImage(img,0,0);
+    await seg.send({image: tmp});
+  };
+  $('#save').onclick = async ()=>{ const blob=await canvasToBlob(cvs,'image/png',0.95); downloadBlob(blob,'image_sans_fond.png'); };
+}
+
+/* ====== TXT → PDF ====== */
+function uiTXT2PDF(){
+  $('#panel').innerHTML = `
+    <div class="card"><h2>TXT → PDF</h2>
+      <div class="grid">
+        <input id="file" type="file" accept=".txt,.md,.markdown">
+        <button id="go" class="btn primary">Convertir</button>
+      </div>
+    </div>`;
+  $('#go').onclick = async ()=>{
+    const f=$('#file').files[0]; if(!f) return alert('Choisis un fichier .txt ou .md');
+    setStatus('Conversion…');
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({unit:'pt', format:'a4'});
+    const text = await (await f.text());
+    const lines = pdf.splitTextToSize(text, 520);
+    let y=60;
+    for(const ln of lines){ if(y>760){ pdf.addPage(); y=60; } pdf.text(40,y,ln); y+=16; }
+    const blob = pdf.output('blob');
+    downloadBlob(blob, f.name.replace(/\.(txt|md|markdown)$/i,'')+'.pdf');
+    setStatus('Terminé ✅');
+  };
+}
+
+})();
+</script>
+</body>
+</html>
